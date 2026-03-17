@@ -1,0 +1,105 @@
+// =============================================================
+// ANIMATIONS — All keyframe definitions
+// =============================================================
+
+// Fade up — used for section reveals
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Fade in — simple opacity
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+// Float — gentle hover effect for profile image
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+// Glow pulse — for the accent ring
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px var(--color-accent-glow);
+    }
+
+    50% {
+        box-shadow: 0 0 50px var(--color-accent-glow), 0 0 80px var(--color-accent-glow);
+    }
+}
+
+// Shimmer — for skill badges on hover
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+// Aurora shift — slow background gradient animation
+@keyframes auroraShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+// Typing cursor blink
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+// Scroll reveal — applied via JS scroll listener later
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s var(--transition-slow),
+        transform 0.7s var(--transition-slow);
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

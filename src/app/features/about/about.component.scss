@@ -1,0 +1,202 @@
+// ── Section Header (reused across all sections) ───────────────
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--color-accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1.1;
+}
+
+.text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-lg);
+  max-width: 500px;
+}
+
+// ── About Grid ────────────────────────────────────────────────
+.about__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+// ── Bio Card ──────────────────────────────────────────────────
+.bio-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: border-color var(--transition-medium);
+
+  &:hover {
+    border-color: var(--color-border-light);
+  }
+}
+
+.bio-text {
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  font-size: var(--fs-base);
+
+  strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+}
+
+.bio-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  margin-top: 0.5rem;
+  transition: gap var(--transition-fast);
+
+  &:hover {
+    gap: 0.75rem;   // Gap grows on hover — subtle motion feedback
+  }
+}
+
+// ── Info Grid ─────────────────────────────────────────────────
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+
+  &:hover {
+    border-color: var(--color-border-light);
+    transform: translateX(4px);   // Slides right on hover — subtle and elegant
+  }
+}
+
+.info-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;    // Allows text truncation to work in flex children
+}
+
+.info-label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.info-value {
+  font-size: var(--fs-sm);
+  color: var(--color-text-primary);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;   // "..." when text is too long
+}
+
+.info-link {
+  color: var(--color-accent);
+  &:hover { text-decoration: underline; }
+}
+
+// ── Achievements ──────────────────────────────────────────────
+.achievements__title {
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+.achievement-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem 1.25rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 0.75rem;
+  transition: all var(--transition-fast);
+
+  &:hover {
+    border-color: rgba(56, 189, 248, 0.3);
+    background: rgba(56, 189, 248, 0.04);
+  }
+}
+
+.achievement-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.achievement-title {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.achievement-desc {
+  font-size: var(--fs-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+// ── Responsive ────────────────────────────────────────────────
+@media (max-width: 868px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

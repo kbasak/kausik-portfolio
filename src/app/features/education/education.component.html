@@ -1,0 +1,69 @@
+<section class="education section" id="education">
+    <div class="container">
+
+        <div class="section-header" appScrollReveal>
+            <span class="section-tag">Academic Background</span>
+            <h2 class="section-title">
+                <span class="text-gradient">Education</span>
+            </h2>
+            <p class="section-subtitle">
+                The foundation that shaped my technical thinking.
+            </p>
+        </div>
+
+        <div class="education__wrapper" *ngIf="education" appScrollReveal [revealDelay]="0.15">
+
+            <div class="education-card">
+
+                <!-- Left: Icon Column -->
+                <div class="education-card__icon-col">
+                    <div class="edu-icon-wrap">
+                        <span class="edu-icon">🎓</span>
+                    </div>
+                    <div class="edu-icon-line"></div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="education-card__content">
+
+                    <div class="edu-header">
+                        <div>
+                            <h3 class="edu-degree">{{ education.degree }}</h3>
+                            <p class="edu-institution">{{ education.institution }}</p>
+                        </div>
+                        <div class="edu-meta">
+                            <span class="edu-duration">
+                                📅 {{ education.duration }}
+                            </span>
+                            <span class="edu-location">
+                                📍 {{ education.location }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- CGPA Highlight -->
+                    <div class="edu-cgpa-row">
+                        <div class="cgpa-bar-wrap">
+                            <div class="cgpa-label">
+                                <span>CGPA</span>
+                                <span class="cgpa-value">{{ education.cgpa }} / 10</span>
+                            </div>
+                            <!--[style.width] — sets inline width dynamically.
+                We convert the CGPA to a percentage: 9.16/10 = 91.6%
+                + '%' concatenates the unit string to make a valid CSS value.
+                This is a clean pattern for progress bars.-->
+                            <div class="cgpa-bar">
+                                <div class="cgpa-bar__fill" [style.width]="(+education.cgpa / 10 * 100) + '%'">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cgpa-badge">
+                            <span>⭐</span>
+                            <span>{{ education.cgpa }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

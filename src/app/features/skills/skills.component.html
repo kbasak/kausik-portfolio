@@ -1,0 +1,60 @@
+<section class="skills section" id="skills">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="section-header" appScrollReveal>
+      <span class="section-tag">What I Work With</span>
+      <h2 class="section-title">
+        Technical <span class="text-gradient">Skills</span>
+      </h2>
+      <p class="section-subtitle">
+        Technologies and tools I use to build enterprise-grade applications.
+      </p>
+    </div>
+
+    <!-- Skills Grid -->
+    <!--
+      *ngFor="let group of skillGroups; let i = index"
+      The "; let i = index" part gives us the current loop index (0, 1, 2...).
+      We use it to apply a staggered animation delay — each card appears
+      slightly after the previous one, creating a cascade effect.
+
+      [style.animation-delay]="i * 0.1 + 's'"
+      This is inline style binding. [style.propertyName] sets a specific
+      CSS property dynamically. Here we calculate the delay:
+      i=0 → '0s', i=1 → '0.1s', i=2 → '0.2s' etc.
+    -->
+    <div class="skills__grid" appScrollReveal [revealDelay]="0.15">
+      <div
+        class="skill-group-card"
+        *ngFor="let group of skillGroups; let i = index"
+        [style.animation-delay]="i * 0.1 + 's'">
+
+        <!-- Card Header -->
+        <div class="skill-group-header">
+          <span class="skill-group-icon">{{ group.icon }}</span>
+          <h3 class="skill-group-name">{{ group.groupName }}</h3>
+          <span class="skill-count">{{ group.skills.length }}</span>
+        </div>
+
+        <!-- Skills inside this group -->
+        <!--
+          Nested *ngFor — inner loop over each skill in the group.
+          <app-skill-badge> is our reusable child component.
+          [name]="skill" passes the skill string to the badge's @Input() name
+          [category]="group.category" passes the group category to @Input() category
+          Both parent → child data transfers happen via property binding [].
+        -->
+        <div class="skill-group-badges">
+          <app-skill-badge
+            *ngFor="let skill of group.skills"
+            [name]="skill"
+            [category]="group.category">
+          </app-skill-badge>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

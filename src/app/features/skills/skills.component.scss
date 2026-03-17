@@ -1,0 +1,110 @@
+// ── Section Header (reused across all sections) ───────────────
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--color-accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1.1;
+}
+
+.text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-lg);
+  max-width: 500px;
+}
+
+// ── Skills Grid ───────────────────────────────────────────────
+.skills__grid {
+  display: grid;
+  // auto-fill: creates as many columns as fit at minimum 280px each
+  // This is fully responsive with NO media queries needed!
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+// ── Skill Group Card ──────────────────────────────────────────
+.skill-group-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: all var(--transition-medium);
+  // Cards fade up when they appear (animation defined in _animations.scss)
+  animation: fadeUp 0.5s ease both;
+
+  &:hover {
+    border-color: var(--color-border-light);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+  }
+}
+
+// ── Card Header ───────────────────────────────────────────────
+.skill-group-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.skill-group-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.skill-group-name {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  flex: 1;
+}
+
+// Skill count pill
+.skill-count {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--color-accent);
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+  min-width: 28px;
+  text-align: center;
+}
+
+// ── Badges Container ──────────────────────────────────────────
+.skill-group-badges {
+  display: flex;
+  flex-wrap: wrap;    // Badges wrap to next line when they run out of space
+  gap: 0.5rem;
+}

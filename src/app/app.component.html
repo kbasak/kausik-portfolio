@@ -1,0 +1,42 @@
+<!--
+  ROOT TEMPLATE — The outermost shell of the entire application.
+-->
+
+<app-navbar></app-navbar>
+
+<main class="main-content">
+  <!--
+    [personal]="portfolioData.personal"
+    ↑ Property binding — passes portfolioData.personal (a PersonalInfo object)
+    into HeroComponent's @Input() named "personal".
+
+    We pass ONLY the personal slice, not the entire portfolioData object.
+    This is intentional — HeroComponent only needs personal info.
+    Each section gets exactly the data it needs, nothing more.
+  -->
+  <app-hero [personal]="portfolioData.personal">
+  </app-hero>
+
+  <app-about [personal]="portfolioData.personal" [achievements]="portfolioData.achievements" class="section-alt">
+  </app-about>
+
+  <app-skills [skillGroups]="portfolioData.skillGroups">
+  </app-skills>
+
+  <app-experience [experience]="portfolioData.experience" class="section-alt">
+  </app-experience>
+
+  <app-projects [projects]="portfolioData.projects">
+  </app-projects>
+
+  <app-education [education]="portfolioData.education" class="section-alt">
+  </app-education>
+
+  <app-certifications [certifications]="portfolioData.certifications">
+  </app-certifications>
+
+  <app-contact class="section-alt"></app-contact>
+
+</main>
+
+<app-footer></app-footer>

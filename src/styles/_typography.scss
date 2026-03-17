@@ -1,0 +1,46 @@
+// =============================================================
+// TYPOGRAPHY — Font imports and text utility classes
+// =============================================================
+
+// Base body typography
+body {
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    color: var(--color-text-primary);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased; // Makes text crisper on Mac/Chrome
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// Heading styles
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+}
+
+// Utility classes for text
+.text-accent {
+    color: var(--color-text-accent);
+}
+
+.text-muted {
+    color: var(--color-text-secondary);
+}
+
+.text-gradient {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.font-mono {
+    font-family: var(--font-mono);
+}

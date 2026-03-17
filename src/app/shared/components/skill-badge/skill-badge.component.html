@@ -1,0 +1,14 @@
+<!--
+  'badge-' + category dynamically builds the class name.
+  If category = 'backend',  class becomes "badge badge-backend"
+  If category = 'frontend', class becomes "badge badge-frontend"
+  etc.
+
+  This single template handles ALL badge variations.
+  The SCSS below defines a different color for each category class.
+-->
+<span
+  class="badge"
+  [ngClass]="'badge-' + category">
+  {{ name }}
+</span>

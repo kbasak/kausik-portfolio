@@ -1,0 +1,486 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;            // Keep aurora layers from causing scrollbars
+  padding: 6rem 0 4rem;
+}
+
+// ── Aurora Background ─────────────────────────────────────────
+// Three overlapping radial gradients that slowly animate position.
+// Combined, they create a soft, shifting "northern lights" effect.
+
+.hero__aurora {
+  position: absolute;
+  inset: 0;                    // Shorthand for top/right/bottom/left: 0
+  z-index: 0;
+  pointer-events: none;        // Clicks pass through — doesn't block interaction
+}
+
+.aurora-layer {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);          // Heavy blur creates the soft glow
+  opacity: 0.35;
+  animation: auroraShift 12s ease infinite alternate;
+  // alternate: plays forward then backward — smooth continuous loop
+}
+
+.aurora-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #1d4ed8, transparent 70%);
+  top: -10%;
+  left: -5%;
+  animation-duration: 12s;
+}
+
+.aurora-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #7c3aed, transparent 70%);
+  top: 20%;
+  right: 10%;
+  animation-duration: 16s;     // Different duration = they drift independently
+  animation-delay: -4s;        // Negative delay = starts mid-animation (no sync)
+}
+
+.aurora-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #0e7490, transparent 70%);
+  bottom: 0;
+  left: 30%;
+  animation-duration: 20s;
+  animation-delay: -8s;
+}
+
+// ── Main Layout ───────────────────────────────────────────────
+.hero__inner {
+  position: relative;
+  z-index: 1;                  // Above the aurora background (z-index: 0)
+  display: grid;
+  grid-template-columns: 1fr 1fr;  // Two equal columns
+  gap: 4rem;
+  align-items: center;
+  min-height: 80vh;
+}
+
+// ── Text Content ──────────────────────────────────────────────
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+// Availability chip
+.hero__greeting {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  color: #34d399;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-pill);
+  width: fit-content;
+  font-family: var(--font-mono);
+}
+
+.greeting-dot {
+  width: 8px;
+  height: 8px;
+  background: #34d399;
+  border-radius: 50%;
+  // Pulsing animation to indicate "live/active" status
+  animation: glowPulse 2s ease infinite;
+  flex-shrink: 0;
+}
+
+// Name heading
+.hero__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);     // clamp(2.5rem, 6vw, 5rem) from variables
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+}
+
+// Gradient text effect on the name
+.name-gradient {
+  background: var(--gradient-text);   // linear-gradient from variables
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  // The text becomes "transparent" and shows the gradient behind it
+}
+
+// Typewriter role display
+.hero__role {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xl);
+  color: var(--color-text-secondary);
+  min-height: 2rem;              // Prevents layout shift as text changes
+}
+
+.role-prefix {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.role-text {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+// Cursor starts invisible, becomes visible when .visible class is added
+.cursor {
+  color: var(--color-accent);
+  font-weight: 300;
+  opacity: 0;
+  transition: opacity 0.1s;
+
+  &.visible { opacity: 1; }
+}
+
+// Tagline paragraph
+.hero__tagline {
+  font-size: var(--fs-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+// ── CTA Buttons ───────────────────────────────────────────────
+.hero__cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-accent);
+  color: var(--color-bg-primary);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-medium);
+
+  svg { transition: transform var(--transition-fast); }
+
+  &:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+
+    svg { transform: translateX(4px); }   // Arrow moves right on hover
+  }
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-light);
+  cursor: pointer;
+  transition: all var(--transition-medium);
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    background: rgba(56, 189, 248, 0.05);
+    transform: translateY(-2px);
+  }
+}
+
+// ── Stats Row ─────────────────────────────────────────────────
+.hero__stats {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.stat__number {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+
+.stat__plus {
+  color: var(--color-accent);
+  font-size: var(--fs-xl);
+}
+
+.stat__label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.stat__divider {
+  width: 1px;
+  height: 36px;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+
+// ── Profile Photo ─────────────────────────────────────────────
+.hero__photo-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1;             // Always a perfect square
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+// Animated rings around the photo
+.photo-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--color-accent);
+  animation: glowPulse 3s ease infinite;
+}
+
+.photo-ring--outer {
+  inset: -16px;
+  opacity: 0.2;
+  animation-delay: 0s;
+}
+
+.photo-ring--inner {
+  inset: -6px;
+  opacity: 0.4;
+  animation-delay: 1.5s;      // Offset delay makes them pulse alternately
+}
+
+// The actual photo circle
+.photo-container {
+  width: 78%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--color-accent);
+  box-shadow: var(--shadow-glow);
+  animation: float 6s ease-in-out infinite;  // Gentle float from _animations.scss
+  position: relative;
+  background: var(--color-bg-card);
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           // Fills the circle, crops if needed
+  object-position: top center; // Prioritizes the face/top of the image
+}
+
+// Initials placeholder shown when no photo is available
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-card);
+
+  span {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 800;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+// ── Floating Tech Badges ──────────────────────────────────────
+.tech-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  font-family: var(--font-mono);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+  white-space: nowrap;
+  // Each badge has its own float animation with different timing
+  animation: float 6s ease-in-out infinite;
+}
+
+.tech-badge--java {
+  top: 2%;
+  right: 5%;
+  animation-delay: 0s;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.tech-badge--spring {
+  top: 35%;
+  right: -12%;
+  animation-delay: 1.5s;
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.tech-badge--microservices {
+  bottom: 5%;
+  right: 5%;
+  animation-delay: 3s;
+  border-color: rgba(129, 140, 248, 0.3);
+}
+
+.tech-badge--restapi {
+  top: 10%;
+  left: -10%;
+  animation-delay: 4.5s;
+  border-color: rgba(236, 72, 153, 0.3);
+}
+
+.tech-badge--sql {
+  bottom: 20%;
+  left: -8%;
+  animation-delay: 6s;
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+// ── Scroll Indicator ──────────────────────────────────────────
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-secondary);
+  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  z-index: 1;
+
+  &:hover { color: var(--color-accent); }
+}
+
+.scroll-arrow {
+  width: 24px;
+  height: 40px;
+  border: 2px solid currentColor;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.scroll-dot {
+  width: 4px;
+  height: 8px;
+  background: currentColor;
+  border-radius: 2px;
+  // Bounces up and down to hint at scrolling
+  animation: scrollBounce 1.5s ease infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%       { transform: translateY(8px); opacity: 0.3; }
+}
+
+// ── Responsive ────────────────────────────────────────────────
+@media (max-width: 968px) {
+  .hero__inner {
+    grid-template-columns: 1fr;   // Stack to single column
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .hero__photo-wrap {
+    order: -1;           // Move photo above text on mobile
+    max-width: 280px;
+  }
+
+  .hero__tagline { max-width: 100%; }
+
+  .hero__cta {
+    justify-content: center;
+  }
+
+  .hero__stats {
+    justify-content: center;
+  }
+
+  .hero__greeting {
+    margin: 0 auto;
+  }
+
+  .tech-badge--spring { right: -2%; }
+  .tech-badge--java   { right: 2%; }
+
+  .tech-badge {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__stats {
+    gap: 1.25rem;
+  }
+
+  .tech-badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .hero__scroll-indicator {
+    display: none;   // Not needed on mobile — users know to scroll
+  }
+
+  .hero {
+    padding-bottom: 3rem;  // Give stats some breathing room at the bottom
+  }
+}

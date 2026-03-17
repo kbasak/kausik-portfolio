@@ -1,0 +1,92 @@
+// =============================================================
+// GLOBAL STYLES — Entry point, imports all partials
+// =============================================================
+
+// Import our design system files (order matters!)
+@use 'styles/variables';
+@use 'styles/typography';
+@use 'styles/animations';
+
+html {
+    scroll-behavior: smooth; // ← Makes navbar links scroll smoothly
+}
+
+// ── CSS Reset & Base ──────────────────────────────
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    background-color: var(--color-bg-primary);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: var(--radius-pill);
+}
+
+::selection {
+    background: var(--color-accent);
+    color: var(--color-bg-primary);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+
+    @media (max-width: 768px) {
+        padding: 0 var(--space-sm);
+    }
+}
+
+.section {
+    padding: var(--space-section) 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.scroll-hidden {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+.scroll-visible {
+    opacity: 1;
+    transform: translateY(0);
+    // transition-delay is set inline by the directive for staggering
+}
+
+.section-alt .section {
+    background: var(--color-bg-secondary);
+}

@@ -1,0 +1,79 @@
+// DESIGN TOKENS — All visual constants live here
+// =============================================================
+
+:root {
+    // ── Color Palette ─────────────────────────────────
+    --color-bg-primary: #0a0f1e; // Deep navy — main background
+    --color-bg-secondary: #111827; // Slightly lighter — card backgrounds
+    --color-bg-card: #1a2235; // Card surface color
+
+    // Dynamic accent — the "glowing" color
+    --color-accent: #38bdf8; // Sky blue (main accent)
+    --color-accent-glow: #38bdf880; // Same with 50% opacity for glows
+    --color-accent-2: #818cf8; // Indigo — secondary accent
+    --color-accent-3: #34d399; // Emerald — tertiary / success
+
+    // Text colors
+    --color-text-primary: #f1f5f9; // Near white — main text
+    --color-text-secondary: #94a3b8; // Muted — subtitles, captions
+    --color-text-accent: #38bdf8; // Same as accent — highlighted text
+
+    // Borders & dividers
+    --color-border: #1e293b;
+    --color-border-light: #334155;
+
+    // ── Gradient Definitions ──────────────────────────
+    // The "aurora" gradient — used for hero and section accents
+    --gradient-aurora:
+        radial-gradient(ellipse at 20% 50%, #1d4ed840 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, #6d28d940 0%, transparent 60%),
+        radial-gradient(ellipse at 60% 80%, #0e749140 0%, transparent 60%);
+
+    // Text gradient — for large heading text
+    --gradient-text: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #34d399 100%);
+
+    // Card hover gradient
+    --gradient-card-hover: linear-gradient(135deg, #1d4ed815, #6d28d915);
+
+    // ── Typography ────────────────────────────────────
+    --font-display: 'Syne', sans-serif; // Bold headings — geometric, modern
+    --font-mono: 'JetBrains Mono', monospace; // Code, name, tech tags
+    --font-body: 'DM Sans', sans-serif; // Body text — clean and readable
+
+    // Font sizes (fluid scale)
+    --fs-xs: 0.75rem; // 12px
+    --fs-sm: 0.875rem; // 14px
+    --fs-base: 1rem; // 16px
+    --fs-lg: 1.125rem; // 18px
+    --fs-xl: 1.25rem; // 20px
+    --fs-2xl: 1.5rem; // 24px
+    --fs-3xl: 2rem; // 32px
+    --fs-4xl: 2.5rem; // 40px
+    --fs-5xl: 3.5rem; // 56px
+    --fs-hero: clamp(2.5rem, 6vw, 5rem); // Responsive hero text
+
+    // ── Spacing ───────────────────────────────────────
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+    --space-2xl: 5rem;
+    --space-section: clamp(4rem, 8vw, 8rem); // Consistent section padding
+
+    // ── Borders & Radius ──────────────────────────────
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-pill: 100px;
+
+    // ── Shadows ───────────────────────────────────────
+    --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 40px rgba(56, 189, 248, 0.15);
+    --shadow-hover: 0 8px 40px rgba(56, 189, 248, 0.25);
+
+    // ── Transitions ───────────────────────────────────
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.35s ease;
+    --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}

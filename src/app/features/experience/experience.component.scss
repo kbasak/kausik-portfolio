@@ -1,0 +1,375 @@
+// ── Section Header ────────────────────────────────────────────
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.section-tag {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--color-accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--color-text-primary);
+    line-height: 1.1;
+}
+
+.text-gradient {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-subtitle {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-lg);
+    max-width: 500px;
+}
+
+// ── Experience List ───────────────────────────────────────────
+.experience__list {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+// ── Experience Card ───────────────────────────────────────────
+.exp-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-medium);
+
+    &:hover {
+        border-color: var(--color-border-light);
+        box-shadow: var(--shadow-card);
+    }
+
+    &.exp-card--current {
+        border-color: rgba(56, 189, 248, 0.2);
+    }
+
+    &.exp-card--expanded {
+        border-color: rgba(56, 189, 248, 0.35);
+        box-shadow: var(--shadow-glow);
+    }
+}
+
+// ── Card Header (always visible) ──────────────────────────────
+.exp-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.5rem 1.75rem;
+    user-select: none;
+}
+
+.exp-card__left {
+    display: flex;
+    align-items: stretch;
+    gap: 1.25rem;
+    flex: 1;
+    min-width: 0;
+}
+
+// Vertical accent bar on the left
+.exp-card__accent-bar {
+    width: 3px;
+    border-radius: 2px;
+    background: var(--color-border-light);
+    flex-shrink: 0;
+    transition: background var(--transition-medium);
+
+    .exp-card--current &,
+    .exp-card--expanded & {
+        background: var(--color-accent);
+        box-shadow: 0 0 8px var(--color-accent-glow);
+    }
+}
+
+.exp-card__title-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+}
+
+.exp-card__role-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.exp-card__role {
+    font-family: var(--font-display);
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.badge-current {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    font-family: var(--font-mono);
+    color: #34d399;
+    background: rgba(52, 211, 153, 0.1);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+    animation: glowPulse 2s ease infinite;
+}
+
+.exp-card__company-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.company-name {
+    font-size: var(--fs-base);
+    font-weight: 600;
+    color: var(--color-accent);
+}
+
+.company-sep {
+    color: var(--color-border-light);
+}
+
+.company-location {
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+}
+
+// ── Right: Duration ───────────────────────────────────────────
+.exp-card__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.exp-card__duration {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--color-accent);
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+}
+
+// ── Bottom Center Expand Indicator ───────────────────────────
+.exp-card__expand-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1.75rem 0.85rem;
+    cursor: pointer;
+    user-select: none;
+    transition: all var(--transition-fast);
+
+    &:hover .expand-btn {
+        color: var(--color-text-primary);
+        border-color: var(--color-accent);
+        background: rgba(56, 189, 248, 0.08);
+        box-shadow: 0 0 16px var(--color-accent-glow);
+    }
+
+    &:hover .expand-line {
+        background: var(--color-accent);
+        opacity: 0.5;
+    }
+
+    // Expanded state
+    &.open {
+        .expand-btn {
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+            background: rgba(56, 189, 248, 0.08);
+            // Stop pulse animation once opened
+            animation: none;
+
+            svg {
+                transform: rotate(180deg);
+            }
+        }
+
+        .expand-line {
+            background: var(--color-accent);
+            opacity: 0.4;
+        }
+    }
+}
+
+// ── Collapse Indicator (inside details, at bottom) ────────────
+.exp-card__collapse-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+
+    .expand-btn {
+        // Override the pulse animation — no need to attract attention here
+        animation: none;
+        color: var(--color-accent);
+        border-color: var(--color-accent);
+        background: rgba(56, 189, 248, 0.08);
+        padding: 0.35rem 0.6rem;
+    }
+
+    &:hover .expand-btn {
+        box-shadow: 0 0 16px var(--color-accent-glow);
+        background: rgba(56, 189, 248, 0.15);
+    }
+
+    &:hover .expand-line {
+        background: var(--color-accent);
+        opacity: 0.5;
+    }
+}
+
+// Horizontal lines flanking the button
+.expand-line {
+    flex: 1;
+    height: 1px;
+    background: var(--color-border);
+    border-radius: 1px;
+    transition: all var(--transition-medium);
+}
+
+// Center pill button
+.expand-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    padding: 0.35rem 1rem;
+    border-radius: var(--radius-pill);
+    transition: all var(--transition-medium);
+    white-space: nowrap;
+    // Gentle pulse to attract eye on first load
+    animation: expandPulse 2.5s ease infinite;
+
+    svg {
+        transition: transform var(--transition-medium);
+        flex-shrink: 0;
+    }
+}
+
+@keyframes expandPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+    }
+
+    50% {
+        box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.12);
+    }
+}
+
+// ── Expandable Details ────────────────────────────────────────
+.exp-card__details {
+    padding: 0 1.75rem 1.75rem;
+    padding-left: calc(1.75rem + 3px + 1.25rem); // Aligns with text past the accent bar
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    animation: fadeUp 0.25s ease both;
+    border-top: 1px solid var(--color-border);
+}
+
+// ── Highlights ────────────────────────────────────────────────
+.exp-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding-top: 1.25rem;
+}
+
+.exp-highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+}
+
+.highlight-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+}
+
+// ── Tech Stack ────────────────────────────────────────────────
+.exp-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+}
+
+// ── Responsive ────────────────────────────────────────────────
+@media (max-width: 768px) {
+
+    // Hide the expand indicator — show all details by default on mobile
+    .exp-card__expand-indicator {
+        display: none;
+    }
+
+    .exp-card__collapse-indicator {
+        display: none;
+    }
+
+    .exp-card__right {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .exp-card__header {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    // Always show details on mobile
+    .exp-card__details {
+        display: flex !important;
+        padding-left: 1.75rem;
+    }
+}

@@ -1,0 +1,111 @@
+<section class="about section" id="about">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="section-header" appScrollReveal>
+      <span class="section-tag">Who I Am</span>
+      <h2 class="section-title">
+        About <span class="text-gradient">Me</span>
+      </h2>
+      <p class="section-subtitle">
+        A little background on my journey, values, and what drives me.
+      </p>
+    </div>
+
+    <!-- Main Grid: Bio + Info Cards -->
+    <div class="about__grid" appScrollReveal [revealDelay]="0.15">
+
+      <!-- ── LEFT: Bio ──────────────────────────────────────── -->
+      <div class="about__bio">
+
+        <div class="bio-card">
+          <p class="bio-text" *ngIf="personal">
+            {{ personal.tagline }}. I'm a Java Backend Developer with
+            <strong>3.6 years of experience</strong> building secure, scalable
+            enterprise applications for banking, financial services, and healthcare domains.
+          </p>
+          <p class="bio-text">
+            I specialize in <strong>Spring Boot microservices</strong>, RESTful API design,
+            and enterprise-grade authentication systems. I've contributed to critical
+            systems used across <strong>EMEA and APAC regions</strong>, working closely
+            with cross-functional teams to deliver high-impact solutions.
+          </p>
+          <p class="bio-text">
+            Currently at <strong>Infosys</strong> as an Associate Consultant, I thrive
+            in fast-paced Agile environments where clean code, collaboration, and
+            continuous delivery are the norm.
+          </p>
+
+          <!-- CTA inside bio -->
+          <a
+            class="bio-cta"
+            *ngIf="personal"
+            [href]="personal.resumeLink"
+            download>
+            Download My Resume
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- ── RIGHT: Info Cards ──────────────────────────────── -->
+      <div class="about__info">
+
+        <!-- Quick Info Items -->
+        <div class="info-grid">
+          <!--
+            *ngFor over the infoItems getter.
+            Getters work exactly like array properties in templates —
+            Angular calls the getter function and iterates the result.
+          -->
+          <div class="info-item" *ngFor="let item of infoItems">
+            <span class="info-icon">{{ item.icon }}</span>
+            <div class="info-content">
+              <span class="info-label">{{ item.label }}</span>
+              <!--
+                Two versions of the value — one is a link, one is plain text.
+                *ngIf and its counterpart [else] lets us show different content
+                based on a condition without repeating the wrapper element.
+
+                Here we use the simpler approach: two separate elements with
+                *ngIf on each. Clean and easy to read.
+              -->
+              <a
+                *ngIf="item.link"
+                [href]="item.link"
+                target="_blank"
+                class="info-value info-link">
+                {{ item.value }}
+              </a>
+              <span *ngIf="!item.link" class="info-value">
+                {{ item.value }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Achievements -->
+        <div class="achievements" *ngIf="achievements?.length">
+          <h3 class="achievements__title">🏅 Achievements</h3>
+          <div class="achievement-card" *ngFor="let ach of achievements">
+            <span class="achievement-icon">{{ ach.icon }}</span>
+            <div>
+              <p class="achievement-title">{{ ach.title }}</p>
+              <p class="achievement-desc">{{ ach.description }}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

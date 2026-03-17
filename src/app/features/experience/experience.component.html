@@ -1,0 +1,96 @@
+<section class="experience section" id="experience">
+    <div class="container">
+
+        <div class="section-header" appScrollReveal>
+            <span class="section-tag">Where I've Worked</span>
+            <h2 class="section-title">
+                Work <span class="text-gradient">Experience</span>
+            </h2>
+            <p class="section-subtitle">
+                My professional journey building enterprise applications.
+            </p>
+        </div>
+
+        <div class="experience__list" appScrollReveal [revealDelay]="0.15">
+
+            <div class="exp-card" *ngFor="let exp of experience; let i = index"
+                [class.exp-card--current]="exp.isCurrent" [class.exp-card--expanded]="isExpanded(i)">
+
+                <!-- ── Always Visible: Card Header ── -->
+                <div class="exp-card__header">
+
+                    <div class="exp-card__left">
+                        <div class="exp-card__accent-bar"></div>
+                        <div class="exp-card__title-block">
+                            <div class="exp-card__role-row">
+                                <h3 class="exp-card__role">{{ exp.role }}</h3>
+                                <span class="badge-current" *ngIf="exp.isCurrent">● Current</span>
+                            </div>
+                            <div class="exp-card__company-row">
+                                <span class="company-name">{{ exp.company }}</span>
+                                <span class="company-sep">·</span>
+                                <span class="company-location">{{ exp.location }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exp-card__right">
+                        <span class="exp-card__duration">{{ exp.duration }}</span>
+                    </div>
+
+                </div>
+
+                <!-- ── View Details Indicator (shown when COLLAPSED) ── -->
+                <div class="exp-card__expand-indicator" *ngIf="!isExpanded(i)" (click)="toggleExpand(i)">
+                    <div class="expand-line"></div>
+                    <div class="expand-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                        <span>View Details</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </div>
+                    <div class="expand-line"></div>
+                </div>
+
+                <!-- ── Expandable: Full Details (shown when EXPANDED) ── -->
+                <div class="exp-card__details" *ngIf="isExpanded(i)">
+
+                    <!-- Highlights -->
+                    <ul class="exp-highlights">
+                        <li *ngFor="let point of exp.highlights" class="exp-highlight-item">
+                            <span class="highlight-dot"></span>
+                            <span>{{ point }}</span>
+                        </li>
+                    </ul>
+
+                    <!-- Tech Stack -->
+                    <div class="exp-tech">
+                        <app-skill-badge *ngFor="let tech of exp.techStack" [name]="tech" category="backend">
+                        </app-skill-badge>
+                    </div>
+
+                    <!-- Show Less — at the very bottom -->
+                    <div class="exp-card__collapse-indicator" (click)="toggleExpand(i)">
+                        <div class="expand-line"></div>
+                        <div class="expand-btn open">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="18 15 12 9 6 15" />
+                            </svg>
+                        </div>
+                        <div class="expand-line"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>

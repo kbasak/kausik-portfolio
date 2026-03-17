@@ -1,0 +1,64 @@
+<footer class="footer">
+  <div class="container footer__inner">
+
+    <!-- ── Brand ── -->
+    <div class="footer__brand">
+      <span class="footer__logo">
+        <span class="logo-bracket">&lt;</span>KB<span class="logo-bracket">/&gt;</span>
+      </span>
+      <p class="footer__copy">
+        Crafted with Angular 19 &amp; ❤️ by Kausik Basak
+      </p>
+    </div>
+
+    <!-- ── Quick Links ── -->
+    <nav class="footer__links" aria-label="Footer navigation">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- ── Social Icons ── -->
+    <div class="footer__social">
+      <!--
+        [href]="link.url"        → property binding: sets the href to the variable value
+        [attr.aria-label]        → attribute binding: for accessibility attributes
+                                   use [attr.X] when the attribute is not a DOM property
+        target="_blank"          → opens in new tab (no brackets = static value)
+        rel="noopener noreferrer"→ security best practice when using target="_blank"
+      -->
+      <a
+        *ngFor="let link of socialLinks"
+        [href]="link.url"
+        [attr.aria-label]="link.label"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20" height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+          <!--
+            [attr.d]="link.svgPath" → dynamically sets the SVG path data.
+            This lets us reuse a single <svg> element for all icons,
+            just swapping the path data from our socialLinks array.
+          -->
+          <path [attr.d]="link.svgPath"></path>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- ── Bottom Bar ── -->
+  <div class="footer__bottom">
+    <p>© {{ currentYear }} Kausik Basak. All rights reserved.</p>
+  </div>
+
+</footer>

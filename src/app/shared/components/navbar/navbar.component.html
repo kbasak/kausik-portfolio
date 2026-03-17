@@ -1,0 +1,107 @@
+<!--
+  ════════════════════════════════════════════════════
+  {{ expression }}          INTERPOLATION
+                            Renders a value as text inside an element.
+                            Example: {{ link.label }} → outputs "About"
+
+  [property]="expression"   PROPERTY BINDING
+                            Sets a DOM property to a dynamic value.
+                            Square brackets = Angular evaluates the right side.
+                            Example: [href]="link.url" → sets href to the variable's value
+
+  (event)="method()"        EVENT BINDING
+                            Listens for a DOM event and calls a method.
+                            Parentheses = listen for this event.
+                            Example: (click)="toggleMenu()" → calls toggleMenu on click
+
+  [class.name]="bool"       CLASS BINDING
+                            Adds/removes a CSS class based on a boolean.
+                            Example: [class.scrolled]="isScrolled"
+                            → adds class "scrolled" when isScrolled is true
+
+  *ngFor="let x of arr"     STRUCTURAL DIRECTIVE
+                            Repeats the host element for each item in an array.
+                            * prefix = this directive changes the DOM structure.
+
+  *ngIf="expression"        STRUCTURAL DIRECTIVE
+                            Adds or removes the element from the DOM entirely.
+                            (Not just hiding it — it doesn't exist when false)
+  ════════════════════════════════════════════════════
+-->
+
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="container navbar__inner">
+
+    <!-- ── Logo ── -->
+    <a class="navbar__logo" (click)="scrollToSection('hero')">
+      <span class="logo-bracket">&lt;</span>
+      <span class="logo-name">Kausik</span>
+      <span class="logo-bracket">&nbsp;/&gt;</span>
+    </a>
+
+    <!-- ── Desktop Navigation Links ── -->
+    <ul class="navbar__links">
+      <!--
+        *ngFor repeats this <li> for every object in the navLinks array.
+        "let link" creates a local variable for each iteration.
+        "of navLinks" specifies the array to iterate.
+        On each iteration, "link" = { label: 'About', id: 'about' } etc.
+      -->
+      <li *ngFor="let link of navLinks">
+        <a
+          class="navbar__link"
+          [class.active]="activeSection === link.id"
+          (click)="scrollToSection(link.id)">
+          {{ link.label }}
+        </a>
+      </li>
+    </ul>
+
+    <!-- ── Hire Me Button (desktop) ── -->
+    <a class="btn-hire" href="mailto:kausikbasak1999@gmail.com">
+      Hire Me
+    </a>
+
+    <!-- ── Hamburger Button (mobile only) ── -->
+    <!--
+      [class.open]="isMenuOpen" → adds class "open" when menu is open.
+      The CSS uses this class to animate the 3 lines into an X shape.
+      aria-label helps screen readers understand the button's purpose.
+    -->
+    <button
+      class="navbar__hamburger"
+      [class.open]="isMenuOpen"
+      (click)="toggleMenu()"
+      aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+
+  <!-- ── Mobile Dropdown Menu ── -->
+  <!--
+    *ngIf completely removes this div when isMenuOpen is false.
+    The fadeUp animation (defined in _animations.scss) plays when it appears.
+    This is better than CSS display:none because it keeps the DOM clean.
+  -->
+  <div class="navbar__mobile-menu" *ngIf="isMenuOpen">
+    <ul>
+      <li *ngFor="let link of navLinks">
+        <a
+          class="navbar__mobile-link"
+          [class.active]="activeSection === link.id"
+          (click)="scrollToSection(link.id)">
+          {{ link.label }}
+        </a>
+      </li>
+      <li>
+        <a class="btn-hire mobile" href="mailto:kausikbasak1999@gmail.com">
+          Hire Me
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</nav>

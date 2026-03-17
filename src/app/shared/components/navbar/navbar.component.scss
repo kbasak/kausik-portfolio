@@ -1,0 +1,219 @@
+// NAVBAR STYLES
+//
+// KEY CONCEPT — View Encapsulation:
+// Angular compiles these styles with a unique attribute selector,
+// like: .navbar[_ngcontent-ng-c123] { }
+// This means these styles ONLY apply to elements in THIS component.
+// You can freely use class names like .navbar without worrying about
+// conflicts with any other component in the entire app.
+// =============================================================
+
+.navbar {
+    position: fixed; // Detaches from page flow and sticks to viewport top
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; // Ensures navbar stays above all other elements
+    padding: 1.25rem 0;
+    transition: all var(--transition-medium);
+    background: transparent;
+
+    // ── Scrolled State ────────────────────────────────────────────
+    // When Angular adds class="scrolled", this block activates.
+    // &.scrolled is SCSS nesting — equivalent to .navbar.scrolled in plain CSS.
+    &.scrolled {
+        background: rgba(10, 15, 30, 0.85);
+        backdrop-filter: blur(20px); // Frosted glass effect
+        -webkit-backdrop-filter: blur(20px); // Safari support
+        border-bottom: 1px solid var(--color-border);
+        padding: 0.85rem 0;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+// ── Logo ──────────────────────────────────────────────────────
+.navbar__logo {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    transition: opacity var(--transition-fast);
+    user-select: none;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.logo-bracket {
+    color: var(--color-accent);
+}
+
+.logo-name {
+    color: var(--color-text-primary);
+    padding: 0 0.15rem;
+}
+
+// ── Desktop Links ─────────────────────────────────────────────
+.navbar__links {
+    display: flex;
+    list-style: none;
+    gap: 0.25rem;
+    align-items: center;
+}
+
+.navbar__link {
+    font-family: var(--font-body);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    position: relative;
+    letter-spacing: 0.02em;
+
+    &:hover {
+        color: var(--color-text-primary);
+        background: rgba(56, 189, 248, 0.08);
+    }
+
+    &.active {
+        color: var(--color-accent);
+
+        // Glowing dot indicator under the active link
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            box-shadow: 0 0 8px var(--color-accent);
+        }
+    }
+}
+
+// ── Hire Me Button ────────────────────────────────────────────
+.btn-hire {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    font-family: var(--font-body);
+    color: var(--color-bg-primary);
+    background: var(--color-accent);
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+
+    &:hover {
+        box-shadow: 0 0 20px var(--color-accent-glow);
+        transform: translateY(-1px);
+    }
+
+    &.mobile {
+        display: inline-block;
+        margin-top: 0.5rem;
+    }
+}
+
+// ── Hamburger Button ──────────────────────────────────────────
+.navbar__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+
+    span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--color-text-primary);
+        border-radius: 2px;
+        transition: all var(--transition-medium);
+        transform-origin: center;
+    }
+
+    // Animate 3 lines → X shape when menu is open
+    &.open {
+        span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+    }
+}
+
+// ── Mobile Menu ───────────────────────────────────────────────
+.navbar__mobile-menu {
+    background: rgba(10, 15, 30, 0.97);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--color-border);
+    padding: 1.5rem var(--space-lg);
+    animation: fadeUp 0.25s ease forwards; // defined in _animations.scss
+
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+}
+
+.navbar__mobile-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-lg);
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+
+    &:hover,
+    &.active {
+        color: var(--color-accent);
+        background: rgba(56, 189, 248, 0.08);
+        padding-left: 1.5rem;
+    }
+}
+
+// ── Responsive ────────────────────────────────────────────────
+@media (max-width: 768px) {
+    .navbar__links {
+        display: none;
+    }
+
+    .btn-hire:not(.mobile) {
+        display: none;
+    }
+
+    .navbar__hamburger {
+        display: flex;
+    }
+}

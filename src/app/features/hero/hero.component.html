@@ -1,0 +1,193 @@
+<!--
+  HERO SECTION TEMPLATE
+
+  id="hero" — this is the anchor the Navbar uses to detect the active section.
+  Every section component will have a unique id like this.
+
+  The structure:
+  ┌─────────────────────────────────────────┐
+  │  [Aurora Background]                    │
+  │                                         │
+  │  LEFT: Text content    RIGHT: Photo     │
+  │  - Greeting                             │
+  │  - Name (gradient)     [Profile img]    │
+  │  - Typewriter role     [Glow ring]      │
+  │  - Tagline                              │
+  │  - CTA Buttons                          │
+  │  - Stats row                            │
+  │                                         │
+  │  [Scroll indicator]                     │
+  └─────────────────────────────────────────┘
+-->
+
+<section class="hero" id="hero">
+
+  <!-- Aurora background layers — pure CSS animated gradients -->
+  <div class="hero__aurora">
+    <div class="aurora-layer aurora-1"></div>
+    <div class="aurora-layer aurora-2"></div>
+    <div class="aurora-layer aurora-3"></div>
+  </div>
+
+  <div class="container hero__inner">
+
+    <!-- ══ LEFT: Text Content ══════════════════════════════════ -->
+    <div class="hero__content">
+
+      <!-- Greeting chip -->
+      <div class="hero__greeting">
+        <span class="greeting-dot"></span>
+        <span>Available for opportunities</span>
+      </div>
+
+      <!-- Name -->
+      <!--
+        *ngIf="personal" — only render if personal data has been passed in.
+        personal?.name — the ?. is the "optional chaining" operator.
+        If personal is undefined (hasn't arrived yet), it returns undefined
+        instead of throwing an error. Safe navigation.
+      -->
+      <h1 class="hero__name" *ngIf="personal">
+        Hi, I'm <br>
+        <span class="name-gradient">{{ personal.name }}</span>
+      </h1>
+
+      <!-- Typewriter role -->
+      <div class="hero__role">
+        <span class="role-prefix">&lt;</span>
+        <span class="role-text">{{ displayedRole }}</span>
+        <!--
+          [class.visible]="showCursor"
+          The cursor element toggles the "visible" class every 500ms
+          (controlled by showCursor in the component class).
+          This creates the blinking cursor effect.
+        -->
+        <span class="cursor" [class.visible]="showCursor">|</span>
+        <span class="role-prefix">/&gt;</span>
+      </div>
+
+      <!-- Tagline -->
+      <p class="hero__tagline" *ngIf="personal">
+        {{ personal.tagline }}
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="hero__cta">
+        <!--
+          (click)="scrollToSection('projects')"
+          Event binding — clicking this button calls scrollToSection
+          with the string 'projects' as the argument.
+        -->
+        <button class="btn-primary" (click)="scrollToSection('projects')">
+          View My Work
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+
+        <!--
+          [href]="personal?.resumeLink"
+          Property binding on the href attribute — sets it to the
+          resumeLink value from PersonalInfo (defined in portfolio.data.ts).
+          download attribute tells the browser to download the file instead of opening it.
+        -->
+        <a
+          class="btn-secondary"
+          [href]="personal.resumeLink"
+          download
+          *ngIf="personal">
+          Download Resume
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="hero__stats">
+        <div class="stat">
+          <span class="stat__number">3.6<span class="stat__plus">+</span></span>
+          <span class="stat__label">Years Experience</span>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <span class="stat__number">3<span class="stat__plus">+</span></span>
+          <span class="stat__label">Projects Delivered</span>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <span class="stat__number">2<span class="stat__plus">+</span></span>
+          <span class="stat__label">Companies</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══ RIGHT: Profile Photo ════════════════════════════════ -->
+    <div class="hero__photo-wrap">
+
+      <!-- Decorative rings -->
+      <div class="photo-ring photo-ring--outer"></div>
+      <div class="photo-ring photo-ring--inner"></div>
+
+      <!-- Photo container -->
+      <div class="photo-container">
+        <!--
+          [src]="personal?.profilePhoto"
+          Property binding — sets the image src dynamically from our data.
+          Place your photo at: src/assets/images/profile.jpg
+          (any format works — jpg, png, webp)
+
+          [alt]="personal?.name"
+          Always set alt text for accessibility — screen readers read this.
+        -->
+        <img
+          *ngIf="personal"
+          [src]="personal.profilePhoto"
+          [alt]="personal.name"
+          class="profile-photo"
+          onerror="this.src='assets/images/placeholder.svg'"
+        />
+
+        <!-- Fallback when no photo yet -->
+        <div class="photo-placeholder" *ngIf="!personal">
+          <span>KB</span>
+        </div>
+      </div>
+
+      <!-- Floating tech badge decorations -->
+        <div class="tech-badge tech-badge--java">
+            <span>♨️</span> Java
+        </div>
+        <div class="tech-badge tech-badge--spring">
+            <span>🧩</span> Spring Boot
+        </div>
+        <div class="tech-badge tech-badge--microservices">
+            <span>🛢️</span> Microservices
+        </div>
+        <div class="tech-badge tech-badge--restapi">
+            <span>⚡</span> RESTful APIs
+        </div>
+        <div class="tech-badge tech-badge--sql">
+            <span>🗄️</span> SQL
+        </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll-indicator" (click)="scrollToSection('about')">
+    <span>Scroll</span>
+    <div class="scroll-arrow">
+      <div class="scroll-dot"></div>
+    </div>
+  </div>
+
+</section>

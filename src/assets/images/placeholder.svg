@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <circle cx="100" cy="100" r="100" fill="#1a2235"/>
+  <circle cx="100" cy="80" r="35" fill="#334155"/>
+  <ellipse cx="100" cy="160" rx="55" ry="40" fill="#334155"/>
+  <text x="100" y="92" text-anchor="middle" fill="#38bdf8"
+    font-family="monospace" font-size="28" font-weight="bold">KB</text>
+</svg>

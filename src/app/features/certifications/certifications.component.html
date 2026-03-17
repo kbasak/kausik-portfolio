@@ -1,0 +1,45 @@
+<section class="certifications section" id="certifications">
+    <div class="container">
+        <div class="section-header" appScrollReveal>
+            <span class="section-tag">Credentials</span>
+            <h2 class="section-title">
+                <span class="text-gradient">Certifications</span>
+            </h2>
+            <p class="section-subtitle">
+                Validated expertise through industry-recognized certifications.
+            </p>
+        </div>
+        <div class="cert__grid" appScrollReveal [revealDelay]="0.15">
+            <div class="cert-card" *ngFor="let cert of certifications; let i = index"
+                [style.animation-delay]="i * 0.15 + 's'">
+                <!-- Top color bar per issuer -->
+                <div class="cert-card__bar" [style.background]="getIssuerColor(cert.issuer)">
+                </div>
+                <div class="cert-card__content">
+                    <!-- Icon -->
+                    <div class="cert-icon" [style.background]="getIssuerColor(cert.issuer) + '18'"
+                        [style.border-color]="getIssuerColor(cert.issuer) + '40'">
+                        <span>{{ getIssuerIcon(cert.issuer) }}</span>
+                    </div>
+                    <!-- Name -->
+                    <h3 class="cert-name">{{ cert.name }}</h3>
+                    <!-- Issuer + Year -->
+                    <div class="cert-meta">
+                        <span class="cert-issuer" [style.color]="getIssuerColor(cert.issuer)">
+                            {{ cert.issuer }}
+                        </span>
+                        <span class="cert-year" *ngIf="cert.year">· {{ cert.year }}</span>
+                    </div>
+                    <!-- Verified badge -->
+                    <div class="cert-verified">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        <span>Verified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
