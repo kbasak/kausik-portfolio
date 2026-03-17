@@ -1,15 +1,10 @@
 <section class="experience section" id="experience">
     <div class="container">
 
-        <div class="section-header" appScrollReveal>
-            <span class="section-tag">Where I've Worked</span>
-            <h2 class="section-title">
-                Work <span class="text-gradient">Experience</span>
-            </h2>
-            <p class="section-subtitle">
-                My professional journey building enterprise applications.
-            </p>
-        </div>
+        <!-- Section Header -->
+        <app-section-title appScrollReveal tag="Where I've Worked" title="Work" highlight="Experience"
+            subtitle="My professional journey building enterprise applications.">
+        </app-section-title>
 
         <div class="experience__list" appScrollReveal [revealDelay]="0.15">
 
@@ -78,8 +73,9 @@
                     <div class="exp-card__collapse-indicator" (click)="toggleExpand(i)">
                         <div class="expand-line"></div>
                         <div class="expand-btn open">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round">
                                 <polyline points="18 15 12 9 6 15" />
                             </svg>
                         </div>

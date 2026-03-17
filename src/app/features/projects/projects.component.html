@@ -2,37 +2,25 @@
   <div class="container">
 
     <!-- Section Header -->
-    <div class="section-header" appScrollReveal>
-      <span class="section-tag">What I've Built</span>
-      <h2 class="section-title">
-        Featured <span class="text-gradient">Projects</span>
-      </h2>
-      <p class="section-subtitle">
-        Enterprise applications delivered across banking, fintech, and healthcare domains.
-      </p>
-    </div>
+    <app-section-title appScrollReveal tag="What I've Built" title="Featured" highlight="Projects"
+      subtitle="Enterprise applications delivered across banking, fintech, and healthcare domains.">
+    </app-section-title>
 
     <!-- Projects Grid -->
     <div class="projects__grid" appScrollReveal [revealDelay]="0.15">
 
-      <div
-        class="project-card"
-        *ngFor="let project of projects; let i = index"
+      <div class="project-card" *ngFor="let project of projects; let i = index"
         [style.animation-delay]="i * 0.15 + 's'">
 
         <!-- Domain color bar at top of card -->
-        <div
-          class="project-card__bar"
-          [style.background]="getDomainColor(project.domain)">
+        <div class="project-card__bar" [style.background]="getDomainColor(project.domain)">
         </div>
 
         <div class="project-card__content">
 
           <!-- Domain Badge + Project Number -->
           <div class="project-card__meta">
-            <span
-              class="domain-badge"
-              [style.color]="getDomainColor(project.domain)"
+            <span class="domain-badge" [style.color]="getDomainColor(project.domain)"
               [style.border-color]="getDomainColor(project.domain) + '40'">
               {{ project.domain }}
             </span>
@@ -44,11 +32,10 @@
 
           <!-- Client -->
           <p class="project-card__client">
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
             {{ project.client }}
           </p>
@@ -66,10 +53,7 @@
 
           <!-- Tech Stack -->
           <div class="project-card__tech">
-            <app-skill-badge
-              *ngFor="let tech of project.techStack"
-              [name]="tech"
-              category="backend">
+            <app-skill-badge *ngFor="let tech of project.techStack" [name]="tech" category="backend">
             </app-skill-badge>
           </div>
 

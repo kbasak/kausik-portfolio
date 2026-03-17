@@ -1,14 +1,9 @@
 <section class="certifications section" id="certifications">
     <div class="container">
-        <div class="section-header" appScrollReveal>
-            <span class="section-tag">Credentials</span>
-            <h2 class="section-title">
-                <span class="text-gradient">Certifications</span>
-            </h2>
-            <p class="section-subtitle">
-                Validated expertise through industry-recognized certifications.
-            </p>
-        </div>
+        <!-- Section Title -->
+        <app-section-title appScrollReveal tag="Credentials" title="" highlight="Certifications"
+            subtitle="Validated expertise through industry-recognized certifications.">
+        </app-section-title>
         <div class="cert__grid" appScrollReveal [revealDelay]="0.15">
             <div class="cert-card" *ngFor="let cert of certifications; let i = index"
                 [style.animation-delay]="i * 0.15 + 's'">

@@ -8,13 +8,14 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project } from '../../core/models/portfolio.model';
 import { SkillBadgeComponent } from '../../shared/components/skill-badge/skill-badge.component';
+import { SectionTitleComponent } from '../../shared/components/section-title/section-title.component';
 
 @Component({
   standalone: true,
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
-  imports: [CommonModule, SkillBadgeComponent, ScrollRevealDirective]
+  imports: [CommonModule, SkillBadgeComponent, ScrollRevealDirective, SectionTitleComponent]
 })
 export class ProjectsComponent {
   @Input() projects!: Project[];

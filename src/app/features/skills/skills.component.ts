@@ -10,6 +10,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SkillGroup } from '../../core/models/portfolio.model';
 import { SkillBadgeComponent } from '../../shared/components/skill-badge/skill-badge.component';
+import { SectionTitleComponent } from '../../shared/components/section-title/section-title.component';
 
 @Component({
   standalone: true,
@@ -19,7 +20,8 @@ import { SkillBadgeComponent } from '../../shared/components/skill-badge/skill-b
   imports: [
     CommonModule,
     SkillBadgeComponent,   // Import so we can use <app-skill-badge> in template
-    ScrollRevealDirective   // Import so we can use appScrollReveal in template
+    ScrollRevealDirective,   // Import so we can use appScrollReveal in template
+    SectionTitleComponent
   ]
 })
 export class SkillsComponent {

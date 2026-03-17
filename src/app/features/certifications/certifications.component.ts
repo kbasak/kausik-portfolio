@@ -2,13 +2,14 @@ import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.dir
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Certification } from '../../core/models/portfolio.model';
+import { SectionTitleComponent } from '../../shared/components/section-title/section-title.component';
 
 @Component({
   standalone: true,
   selector: 'app-certifications',
   templateUrl: './certifications.component.html',
   styleUrls: ['./certifications.component.scss'],
-  imports: [CommonModule, ScrollRevealDirective]
+  imports: [CommonModule, ScrollRevealDirective, SectionTitleComponent]
 })
 export class CertificationsComponent {
   @Input() certifications!: Certification[];

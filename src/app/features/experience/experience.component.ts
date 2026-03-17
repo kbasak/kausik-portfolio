@@ -10,13 +10,14 @@ import { Component, Input, OnInit } from '@angular/core';  // ← add OnInit
 import { CommonModule } from '@angular/common';
 import { Experience } from '../../core/models/portfolio.model';
 import { SkillBadgeComponent } from '../../shared/components/skill-badge/skill-badge.component';
+import { SectionTitleComponent } from '../../shared/components/section-title/section-title.component';
 
 @Component({
   standalone: true,
   selector: 'app-experience',
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.scss'],
-  imports: [CommonModule, SkillBadgeComponent, ScrollRevealDirective]
+  imports: [CommonModule, SkillBadgeComponent, ScrollRevealDirective, SectionTitleComponent]
 })
 export class ExperienceComponent implements OnInit {  // ← add implements OnInit
 

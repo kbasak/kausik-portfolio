@@ -2,15 +2,9 @@
   <div class="container">
 
     <!-- Section Header -->
-    <div class="section-header" appScrollReveal>
-      <span class="section-tag">What I Work With</span>
-      <h2 class="section-title">
-        Technical <span class="text-gradient">Skills</span>
-      </h2>
-      <p class="section-subtitle">
-        Technologies and tools I use to build enterprise-grade applications.
-      </p>
-    </div>
+    <app-section-title appScrollReveal tag="What I Know" title="Technical" highlight="Skills"
+      subtitle="Technologies and tools I work with professionally.">
+    </app-section-title>
 
     <!-- Skills Grid -->
     <!--
@@ -25,9 +19,7 @@
       i=0 → '0s', i=1 → '0.1s', i=2 → '0.2s' etc.
     -->
     <div class="skills__grid" appScrollReveal [revealDelay]="0.15">
-      <div
-        class="skill-group-card"
-        *ngFor="let group of skillGroups; let i = index"
+      <div class="skill-group-card" *ngFor="let group of skillGroups; let i = index"
         [style.animation-delay]="i * 0.1 + 's'">
 
         <!-- Card Header -->
@@ -46,10 +38,7 @@
           Both parent → child data transfers happen via property binding [].
         -->
         <div class="skill-group-badges">
-          <app-skill-badge
-            *ngFor="let skill of group.skills"
-            [name]="skill"
-            [category]="group.category">
+          <app-skill-badge *ngFor="let skill of group.skills" [name]="skill" [category]="group.category">
           </app-skill-badge>
         </div>
 

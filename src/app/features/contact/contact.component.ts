@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';    // ← Required for ngModel
 import emailjs from '@emailjs/browser';
+import { SectionTitleComponent } from '../../shared/components/section-title/section-title.component';
 
 @Component({
   standalone: true,
@@ -19,7 +20,8 @@ import emailjs from '@emailjs/browser';
   imports: [
     CommonModule,
     FormsModule,    // ← Import this to use [(ngModel)] in the template
-    ScrollRevealDirective
+    ScrollRevealDirective,
+    SectionTitleComponent
   ]
 })
 export class ContactComponent implements OnInit {

@@ -2,15 +2,9 @@
   <div class="container">
 
     <!-- Section Header -->
-    <div class="section-header" appScrollReveal>
-      <span class="section-tag">Who I Am</span>
-      <h2 class="section-title">
-        About <span class="text-gradient">Me</span>
-      </h2>
-      <p class="section-subtitle">
-        A little background on my journey, values, and what drives me.
-      </p>
-    </div>
+    <app-section-title appScrollReveal tag="Who I Am" title="About" highlight="Me"
+      subtitle="A brief introduction about my background and what drives me.">
+    </app-section-title>
 
     <!-- Main Grid: Bio + Info Cards -->
     <div class="about__grid" appScrollReveal [revealDelay]="0.15">
@@ -37,18 +31,13 @@
           </p>
 
           <!-- CTA inside bio -->
-          <a
-            class="bio-cta"
-            *ngIf="personal"
-            [href]="personal.resumeLink"
-            download>
+          <a class="bio-cta" *ngIf="personal" [href]="personal.resumeLink" download>
             Download My Resume
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
           </a>
         </div>
@@ -77,11 +66,7 @@
                 Here we use the simpler approach: two separate elements with
                 *ngIf on each. Clean and easy to read.
               -->
-              <a
-                *ngIf="item.link"
-                [href]="item.link"
-                target="_blank"
-                class="info-value info-link">
+              <a *ngIf="item.link" [href]="item.link" target="_blank" class="info-value info-link">
                 {{ item.value }}
               </a>
               <span *ngIf="!item.link" class="info-value">
