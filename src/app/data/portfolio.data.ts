@@ -15,7 +15,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
         linkedin: 'https://linkedin.com/in/basak-kausik',
         github: 'https://github.com/kbasak/',     // Add your GitHub URL here
         profilePhoto: 'assets/images/MyImg.jpg',
-        resumeLink: 'assets/resume/Kausik_Resume.pdf',
+        resumeLink: 'https://kausik-portfolio.vercel.app/assets/resume/Kausik_Resume.pdf',
     },
 
     // ── SKILL GROUPS ───────────────────────────────────────────
