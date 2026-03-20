@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "ignoreCommand": "git diff HEAD~1 --name-only | grep -v '\\.md$' | grep -qv '^$'"
+}
