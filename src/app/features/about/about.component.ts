@@ -28,7 +28,7 @@ export class AboutComponent {
       { icon: '📍', label: 'Location', value: this.personal?.location },
       { icon: '✉️', label: 'Email', value: this.personal?.email },
       { icon: '🔗', label: 'LinkedIn', value: 'linkedin.com/in/basak-kausik', link: this.personal?.linkedin },
-      { icon: '💼', label: 'Experience', value: '3.6+ Years' },
+      { icon: '💼', label: 'Experience', value: '4 Years' },
       { icon: '🏢', label: 'Domain', value: 'Banking • Credit Card • Insurance' },
     ];
   }

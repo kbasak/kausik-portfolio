@@ -14,7 +14,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
         location: 'Kolkata, India',
         linkedin: 'https://linkedin.com/in/basak-kausik',
         github: 'https://github.com/kbasak/',     // Add your GitHub URL here
-        profilePhoto: 'assets/images/MyImg.jpg',
+        profilePhoto: 'assets/images/kbasak_img.png',
         resumeLink: 'https://kausik-portfolio.vercel.app/assets/resume/Kausik_Resume.pdf',
     },
 
@@ -62,7 +62,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     experience: [
         {
             company: 'Infosys Limited',
-            role: 'Associate Consultant',
+            role: 'Senior Associate Consultant',
             duration: 'August 2024 – Present',
             location: 'Kolkata, India',
             isCurrent: true,
@@ -102,7 +102,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
                 'Designed and implemented RESTful APIs using Java, Spring, JDBC, and SQL.',
                 'Enhanced and stabilized a legacy system by resolving critical defects and contributing to Angular UI improvements.',
             ],
-            techStack: ['Java', 'Spring', 'JDBC', 'SQL', 'Angular'],
+            techStack: ['Java', 'Spring', 'JDBC', 'SQL', 'Microservices', 'RESTful APIs', 'Angular', 'LDAP', 'SailPoint APIs'],
         },
         {
             name: 'Customizable Paystub Application',
@@ -114,7 +114,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
                 'Implemented multi-organizational support with data persistence using Spring Data JPA and Hibernate.',
                 'Developed secure admin and user portals using Thymeleaf with Spring Security authentication.',
             ],
-            techStack: ['Spring Boot', 'Microservices', 'Spring Data JPA', 'Hibernate', 'Thymeleaf', 'Spring Security'],
+            techStack: ['Java8','Spring Boot', 'Hibernate', 'Spring Data JPA', 'Spring Security', 'Thymeleaf', 'JavaScript' ],
         },
         {
             name: 'Healthcare Claim Settlement Portal',
@@ -126,7 +126,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
                 'Consolidated Health Savings and reimbursement account data into a unified claim submission interface.',
                 'Ensured reliable data persistence and transaction handling using Spring Data JPA and Hibernate.',
             ],
-            techStack: ['Spring Boot', 'REST APIs', 'Spring Data JPA', 'Hibernate'],
+            techStack: ['Java8','Spring Boot', 'Hibernate', 'RESTful APIs', 'Spring Data JPA', 'MySQL', 'ReactJS', 'React Native' ],
         },
     ],
 
