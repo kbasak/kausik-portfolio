@@ -146,6 +146,18 @@ private readonly PUBLIC_KEY  = 'your_public_key';
 
 ---
 
+## 🎢 Vercel Json
+
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "ignoreCommand": "git diff HEAD~1 --name-only | grep -v '\\.md$' | grep -qv '^$'"
+}
+
 ## 📄 License
 
 MIT — feel free to use this as inspiration for your own portfolio.
