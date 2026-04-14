@@ -5,8 +5,6 @@
 > Sections marked 🏗️ were used in the portfolio project.
 > Sections marked 📚 are essential concepts for production Angular development.
 
----
-
 ## 📌 Table of Contents
 
 ### From the Portfolio Project 🏗️
