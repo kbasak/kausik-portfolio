@@ -2,16 +2,7 @@
 
 > Personal portfolio website built with **Angular 19**, showcasing my experience as a Java Backend Developer with 4 years of professional expertise in Spring Boot, Microservices, and AWS.
 
-🌐 **Live:** [kausikbasak.vercel.app](https://kausikbasak.vercel.app)
-
----
-
-## 📚 Dev Notes
-
-| Document | Description |
-|---|---|
-| [🗺️ Angular Learning Roadmap](./ANGULAR-LEARNING-ROADMAP.md) | Step-by-step roadmap for Angular development |
-| [📘 Angular Learning Journal](./ANGULAR-LEARNING-JOURNAL.md) | Complete Angular 19 reference — concepts, patterns, examples |
+🌐 **Live:** [kausikbasak.vercel.app](https://kausik-portfolio.vercel.app/)
 
 ---
 
