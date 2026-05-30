@@ -126,6 +126,7 @@
   border-radius: var(--radius-md);
   margin-bottom: 0.75rem;
   transition: all var(--transition-fast);
+  position: relative;
 
   &:hover {
     border-color: rgba(56, 189, 248, 0.3);
@@ -139,17 +140,210 @@
   margin-top: 0.1rem;
 }
 
+.achievement-title-row {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
 .achievement-title {
   font-size: var(--fs-sm);
   font-weight: 700;
   color: var(--color-text-primary);
-  margin-bottom: 0.25rem;
+  margin: 0;
 }
 
 .achievement-desc {
   font-size: var(--fs-xs);
   color: var(--color-text-secondary);
   line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.achievement-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+// ── Certificate View Button ────────────────────────────────────
+.cert-view-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.7rem;
+  background: var(--color-bg-card);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: var(--radius-sm);
+  color: var(--color-accent);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  animation: subtleGlow 3s ease-in-out infinite;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(56, 189, 248, 0.1);
+    border-color: rgba(56, 189, 248, 0.6);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25);
+    animation: none;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtleGlow {
+  0%, 100% {
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 0 0 rgba(56, 189, 248, 0.1);
+  }
+  50% {
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.15);
+  }
+}
+
+// ── Certificate Modal ──────────────────────────────────────────
+.certificate-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.certificate-modal {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  max-height: 80vh;
+  width: 100%;
+  animation: slideUp 0.3s ease-out;
+  overflow: hidden;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// ── Modal Header ───────────────────────────────────────────────
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.875rem;
+  border-bottom: 1px solid var(--color-border);
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.modal-title {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+  flex: 1;
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  border-radius: var(--radius-sm);
+
+  &:hover {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--color-accent);
+  }
+}
+
+// ── Modal Body ─────────────────────────────────────────────────
+.modal-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  padding: 0.75rem;
+  background: rgba(56, 189, 248, 0.02);
+  min-height: 0;
+}
+
+.certificate-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  object-fit: contain;
+}
+
+// ── Modal Footer ───────────────────────────────────────────────
+.modal-footer {
+  display: flex;
+  gap: 1rem;
+  padding: 0.75rem 0.875rem;
+  border-top: 1px solid var(--color-border);
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.modal-close-action-btn {
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: none;
+  background: var(--color-accent);
+  color: white;
+
+  &:hover {
+    background: rgba(56, 189, 248, 0.9);
+    transform: translateY(-2px);
+  }
 }
 
 // ── Responsive ────────────────────────────────────────────────
@@ -157,5 +351,83 @@
   .about__grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  // Mobile-optimized modal - centered with margins
+  .certificate-modal-overlay {
+    padding: 1rem;
+  }
+
+  .certificate-modal {
+    max-width: 100%;
+    max-height: 85vh;
+    width: 100%;
+  }
+
+  .modal-header {
+    padding: 0.75rem;
+  }
+
+  .modal-body {
+    padding: 0.65rem;
+    max-height: 65vh;
+  }
+
+  .modal-footer {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .modal-close-action-btn {
+    width: 100%;
+  }
+}
+
+// ── Tablet view (768px - 868px) ────────────────────────────────
+@media (max-width: 768px) {
+  .certificate-modal {
+    max-width: 90vw;
+  }
+
+  .modal-title {
+    font-size: var(--fs-xs);
+  }
+
+  .cert-view-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 10px;
+    font-weight: 600;
+  }
+}
+
+// ── Small mobile (max-width: 480px) ────────────────────────────
+@media (max-width: 480px) {
+  .certificate-modal-overlay {
+    padding: 0.75rem;
+  }
+
+  .certificate-modal {
+    max-width: 100%;
+    max-height: 88vh;
+  }
+
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding: 0.75rem;
+  }
+
+  .modal-body {
+    max-height: 68vh;
+  }
+
+  .modal-close-action-btn {
+    font-size: var(--fs-xs);
+    padding: 0.6rem 0.85rem;
+  }
+
+  .cert-view-btn {
+    padding: 0.28rem 0.55rem;
+    font-size: 12.5px;
+    font-weight: 600;
   }
 }

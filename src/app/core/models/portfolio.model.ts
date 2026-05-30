@@ -65,6 +65,7 @@ export interface Achievement {
     title: string;
     description: string;
     icon: string;               // emoji
+    certificateImage?: string;  // optional path to certificate/achievement image
 }
 
 // This is the ROOT model — one object that holds EVERYTHING

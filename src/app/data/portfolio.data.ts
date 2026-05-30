@@ -159,11 +159,13 @@ export const PORTFOLIO_DATA: PortfolioData = {
             title: 'Infosys Insta Award',
             description: 'Recognized for effective execution and critical support on a high-priority client project.',
             icon: '🏆',
+            certificateImage: 'assets/images/Certificate.png',
         },
         {
-            title: 'Client Appreciation Certificate',
+            title: 'Client Appreciation',
             description: 'Awarded for timely delivery and strong collaboration during a critical project phase.',
             icon: '🎖️',
+            certificateImage: 'assets/images/Appreciation.png',
         },
     ],
 };

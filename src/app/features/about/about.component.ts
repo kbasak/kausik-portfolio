@@ -20,6 +20,10 @@ export class AboutComponent {
   @Input() personal!: PersonalInfo;
   @Input() achievements!: Achievement[];
 
+  // Modal state
+  showModal = false;
+  selectedCertificate: { title: string; image: string } | null = null;
+
   // Quick info items built from personal data
   // We define these as a getter so they automatically
   // update if personal data ever changes
@@ -31,5 +35,36 @@ export class AboutComponent {
       { icon: '💼', label: 'Experience', value: '4 Years' },
       { icon: '🏢', label: 'Domain', value: 'Banking • Credit Card • Insurance' },
     ];
+  }
+
+  // Open certificate modal
+  openCertificate(achievement: Achievement) {
+    if (achievement.certificateImage) {
+      this.selectedCertificate = {
+        title: achievement.title,
+        image: achievement.certificateImage
+      };
+      this.showModal = true;
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  // Close certificate modal
+  closeCertificate() {
+    this.showModal = false;
+    this.selectedCertificate = null;
+    // Restore body scroll
+    document.body.style.overflow = 'auto';
+  }
+
+  // Close modal when clicking outside (on the overlay)
+  onOverlayClick() {
+    this.closeCertificate();
+  }
+
+  // Prevent closing when clicking inside modal content
+  onModalContentClick(event: MouseEvent) {
+    event.stopPropagation();
   }
 }

@@ -25,9 +25,15 @@
             with cross-functional teams to deliver high-impact solutions.
           </p>
           <p class="bio-text">
-            Currently at <strong>Infosys</strong> as an Associate Consultant, I thrive
-            in fast-paced Agile environments where clean code, collaboration, and
-            continuous delivery are the norm.
+            Currently at <strong>Infosys</strong> as a <strong>Senior Associate Consultant</strong>, I thrive 
+            in fast-paced Agile environments where clean code, collaboration, and continuous 
+            delivery are the norm. My expertise spans secure authentication, microservices 
+            architecture, and end-to-end API development with Spring Boot and Hibernate.
+          </p>
+          <p class="bio-text">
+            I believe in the power of <strong>Well-Architected</strong>, 
+            delivering sustainable, battle tested solutions that make a tangible 
+            difference in <strong>Fintech</strong> and <strong>Healthcare</strong> ecosystems.
           </p>
 
           <!-- CTA inside bio -->
@@ -81,10 +87,21 @@
           <h3 class="achievements__title">🏅 Achievements</h3>
           <div class="achievement-card" *ngFor="let ach of achievements">
             <span class="achievement-icon">{{ ach.icon }}</span>
-            <div>
-              <p class="achievement-title">{{ ach.title }}</p>
+            <div class="achievement-content">
+              <div class="achievement-title-row">
+                <p class="achievement-title">{{ ach.title }}</p>
+              </div>
               <p class="achievement-desc">{{ ach.description }}</p>
             </div>
+            <!-- View Certificate Button -->
+            <button 
+              *ngIf="ach.certificateImage" 
+              class="cert-view-btn"
+              (click)="openCertificate(ach)"
+              [attr.aria-label]="'View certificate for ' + ach.title"
+              title="View Certificate">
+              View
+            </button>
           </div>
         </div>
 
@@ -94,3 +111,36 @@
 
   </div>
 </section>
+
+<!-- Certificate Modal -->
+<div class="certificate-modal-overlay" *ngIf="showModal" (click)="onOverlayClick()">
+  <div class="certificate-modal" (click)="onModalContentClick($event)">
+    
+    <!-- Header with Title and Close Button -->
+    <div class="modal-header">
+      <h2 class="modal-title">{{ selectedCertificate?.title }}</h2>
+      <button class="modal-close-btn" (click)="closeCertificate()" [attr.aria-label]="'Close certificate modal'">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Certificate Image -->
+    <div class="modal-body">
+      <img 
+        [src]="selectedCertificate?.image" 
+        [alt]="selectedCertificate?.title"
+        class="certificate-image"
+        loading="lazy">
+    </div>
+
+    <!-- Footer with Action Buttons -->
+    <div class="modal-footer">
+      <button class="modal-close-action-btn" (click)="closeCertificate()">Close</button>
+    </div>
+
+  </div>
+</div>
